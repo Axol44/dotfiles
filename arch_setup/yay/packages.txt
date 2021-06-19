@@ -3,11 +3,9 @@
 google-chrome
 
 # Code editors
-neovim-git
 visual-studio-code-insiders-bin
 
 # GUI Customization
-awesome-git
 xcursor-sweet
 
 # Fonts
@@ -16,19 +14,9 @@ nerd-fonts-jetbrains-mono
 # Utilities
 git-delta-bin
 fnm-bin
-glslviewer-git
-
-# Fixes some resizing issues with upstream zsh
-zsh-fix-winchanged-git
 
 # Qt5 extras
 qt5-styleplugins
-
-# Moonlander
-zsa-wally-cli-bin
-
-# obs-plugins
-obs-websocket # websockets support for obs
 
 # Android tools
 scrcpy

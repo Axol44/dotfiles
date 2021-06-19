@@ -21,6 +21,7 @@ unrar
 unzip
 vim
 zip
+zsh
 
 ### CLI Utils
 acpid         # power events daemon
@@ -42,8 +43,6 @@ xclip         # clipboard manager
 youtube-dl    # video downloader
 
 ### Development
-agda
-agda-stdlib
 android-tools
 autoconf
 automake
@@ -56,7 +55,6 @@ gdb
 git
 glu
 go
-haskell-language-server
 lldb
 make
 minted
@@ -64,36 +62,27 @@ mesa
 nodejs
 npm
 python
-racket
-rustup
-rust-analyzer
 shellcheck
-swi-prolog
 texlive-bin
 texlive-core
 texlive-latexextra
 texlive-pictures
 tk
-virtualbox
-virtualbox-guest-utils
 
 ### Desktop
+awesome        # Window manager
 arandr         # Display configuration
 arc-gtk-theme  # Arc theme
-deluge-gtk     # Torrent client
 feh            # Simple image viewer
 flameshot      # Powerful screen shot utility
-firefox        # Browser
-geeqie         # Image visualizer
 gimp           # Open source rastar graphics editor
 glava          # Audio visualizer
 inkscape       # Open source vector graphics editor
 kitty          # Featureful terminal emulator
 lxappearance   # GTK theme configuration
-mpv            # Media player
+vlc            # Media player
 obs-studio     # Powerful screen recorder
 pavucontrol    # Pulseaudio volume control
-peek           # Simple screen recorder
 picom          # Window compositor
 rofi           # Powerful launcher
 thunar         # Customizable file manager

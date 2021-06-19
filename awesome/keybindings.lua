@@ -59,7 +59,7 @@ function generate_globalkeys(tags)
         },
         programs = {
             { Mod,      "Return", "Terminal",     spawn("kitty") },
-            { Mod,      "b",      "Browser",      spawn("firefox") },
+            { Mod,      "b",      "Browser",      spawn("google-chrome-stable") },
             { Mod,      "d",      "Dotfiles",     open_dotfiles },
             { Mod,      "p",      "Launcher",     spawn("rofi -show combi -display-combi do") },
             { {},       "Print",  "Print screen", spawn("flameshot gui") },
