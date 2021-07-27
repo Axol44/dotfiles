@@ -36,6 +36,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.systray = wibox.widget.systray()
     s.systray.visible = false
 
+    local separator = require('widgets.separator')
+
     local wibar = awful.wibar({ screen = s })
     wibar:setup {
         layout = wibox.layout.align.horizontal,
@@ -59,7 +61,6 @@ awful.screen.connect_for_each_screen(function(s)
         wibox.widget {},
         -- Right
         {
-            -- Battery
             require('widgets.battery') {
                 highlight = 35,
                 warning   = 25,
@@ -71,15 +72,14 @@ awful.screen.connect_for_each_screen(function(s)
                 battery = 'BAT0',
                 ac = 'AC'
             },
-            -- Separator
-            wibox.widget {
-                text = " ",
-                widget = wibox.widget.textbox,
+            separator(2),
+            require('widgets.network') {
+                server = 'google.com'
             },
+            separator(1),
             wibox.widget.textclock(),
             awful.widget.keyboardlayout(),
             s.systray,
-            -- Layout box
             awful.widget.layoutbox({
                 screen = s,
                 buttons = {
@@ -167,7 +167,7 @@ client.connect_signal("manage", function (c)
         -- Place clients as slaves
         awful.client.setslave(c)
 
-        if c.name == '<floating>' then
+        if c.name == '<dotfiles>' or c.name == '<floating>' then
             c.floating = true
             area = awful.screen.focused().workarea
 
