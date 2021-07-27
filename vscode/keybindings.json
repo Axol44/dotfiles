@@ -111,4 +111,8 @@
     "command": "-extension.vim_ctrl+k",
     "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
   },
+  {
+    "key": "ctrl+[Semicolon]",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
 ]

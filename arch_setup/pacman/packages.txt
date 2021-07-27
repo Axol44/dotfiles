@@ -27,6 +27,7 @@ zsh
 acpid         # power events daemon
 bat           # cat replacement with syntax highlighting
 brightnessctl # control brightness from command line
+git-delta     # enhanced git diff viewer
 exa           # ls and tree replacement with colors and icons
 fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
@@ -70,7 +71,6 @@ texlive-pictures
 tk
 
 ### Desktop
-awesome        # Window manager
 arandr         # Display configuration
 arc-gtk-theme  # Arc theme
 feh            # Simple image viewer
@@ -109,6 +109,11 @@ openbsd-netcat
 openssh
 openssh-askpass
 wpa_supplicant
+
+### Printing
+cups
+avahi
+nss-mdns
 
 ### Other
 gifski  # Required by peek to generate good quality gifs

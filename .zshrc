@@ -2,7 +2,7 @@
 
 # Global variables
 export USE_PLUGINS=true # Load plugins or not
-export {EDITOR,VISUAL}=nvim
+export {EDITOR,VISUAL}=vim
 export QT_QPA_PLATFORMTHEME=gtk2
 export MANPAGER='nvim +Man!'
 export BAT_THEME='NightOwl'

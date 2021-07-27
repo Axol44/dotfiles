@@ -1,18 +1,18 @@
 # Browser
 # Controversial, but this is the browser I use for now
 google-chrome
+awesome-git
 
 # Code editors
 visual-studio-code-insiders-bin
 
 # GUI Customization
-xcursor-sweet
+# xcursor-sweet
 
 # Fonts
 nerd-fonts-jetbrains-mono
 
 # Utilities
-git-delta-bin
 fnm-bin
 
 # Qt5 extras
