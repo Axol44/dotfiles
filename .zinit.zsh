@@ -48,7 +48,7 @@ alt-u:preview-page-up
 alt-d:preview-page-down
 alt-j:preview-down+preview-down+preview-down
 alt-k:preview-up+preview-up+preview-up
-?:toggle-preview
+alt-c:toggle-preview
 
 # History
 alt-p:previous-history
@@ -144,6 +144,8 @@ zd() {
     if [[ -n "$DIR" ]]; then
       cd "$DIR" || exit
     fi
+  else
+    echo "The current directory has no subdirectories"
   fi
 }
 
