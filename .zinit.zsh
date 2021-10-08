@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 
 EXCLUDE_DIRS='
-.git .fnm .cargo .vscode virtualenvs node_modules .cache __pycache__
-.fzf-vim-history .rustup .vscode-insiders .zinit .local .vim .nv .config
-.sdkman .npm .yay .mysql .yay .pki .gnome cache .nix .nix-profile jsm build
-.nv .venv debug release .stack .stack-work .cabal dist dist-newstyle .gradle
-.java .tooling .nix-defexpr mod .yarn .ipython .ghc pkg .emscripten_cache
-.mozilla __MACOSX nltk_data .nvim'
+.git go virtualenvs node_modules __pycache__ cache jsm build debug release
+dist dist-newstyle mod pkg __MACOSX nltk_data wekafiles libchart fpdf16'
 
 EXCLUDE_STRING=$(echo -n "$EXCLUDE_DIRS" | tr ' ' '\n' | \
                    sed 's/^/--exclude /' | paste -sd' ')
 
 # fzf
-export FZF_DEFAULT_COMMAND="fd --type f $EXCLUDE_STRING --hidden --follow"
+export FZF_DEFAULT_COMMAND="fd --type f $EXCLUDE_STRING --follow"
 FZF_BINDINGS='
 # Global
 esc:abort
@@ -126,27 +122,16 @@ fzf_preview_params() {
   fi
 }
 
-export ZD_FD_COMMAND_ARGS="--type d $EXCLUDE_STRING --hidden"
 # go to folder
 zd() {
   PREVIEW_COMMAND='exa --color always --tree --level=2 --icons --git-ignore {}'
-
-  OUT="$(xargs fd <<< "$ZD_FD_COMMAND_ARGS" 2> /dev/null)"
-
-  # zsh specific
-  # shellcheck disable=SC2128
-  if [[ -n "$OUT" ]]; then
-    DIR="$(fzf +m \
-            --preview="$PREVIEW_COMMAND" \
-            --preview-window="$(fzf_preview_params 50)" \
-            --history="$HOME/.fzf-zd-history" <<< "$OUT")"
-
-    if [[ -n "$DIR" ]]; then
-      cd "$DIR" || exit
-    fi
-  else
-    echo "The current directory has no subdirectories"
-  fi
+  cd "$(\
+    FZF_DEFAULT_COMMAND="fd --type d $EXCLUDE_STRING" \
+    fzf --no-multi \
+        --exit-0 \
+        --preview="$PREVIEW_COMMAND" \
+        --preview-window="$(fzf_preview_params 50)" \
+        --history="$HOME/.fzf-zd-history")"
 }
 
 # search regex

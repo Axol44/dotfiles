@@ -153,6 +153,11 @@ alias gits="git status"
 alias z=zathura
 alias idris2="rlwrap idris2"
 
+# Fix white flash before startup
+emacs() {
+  /usr/bin/env emacsclient -cnqua '' "$@" &> /dev/null
+}
+
 # }}}
 
 # Keybindings {{{
@@ -203,6 +208,11 @@ path+=( $HOME/dotfiles/scripts )
 
 # Bottom setup {{{
 
+# Disable annoying Ctrl-S
+if [[ -t 0 && $- = *i* ]]; then
+  stty -ixon
+fi
+
 # fnm
 command -v fnm> /dev/null 2>&1 && \
   zsh-defer -c 'eval `fnm env`'
@@ -229,6 +239,9 @@ function load_aws_cli() {
 }
 
 zsh-defer load_aws_cli
+
+type keychain &> /dev/null \
+  && eval "$(keychain --eval --quiet)"
 
 # Powerlevel10k prompt configuration
 # OS name prompt segment

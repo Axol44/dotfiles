@@ -33,6 +33,7 @@ fd            # find replacement with better user experience
 fzf           # powerful and really useful fuzzy selector
 jq            # json manipulator
 httpie        # easier curl
+keychain      # ssh identity management
 moreutils     # extra cli utils (especially vidir)
 neofetch      # cli system info viewer
 rlwrap        # readline wrapper for better features for CLI programs
@@ -49,12 +50,14 @@ autoconf
 automake
 bash-language-server
 clang
+cmake
 docker
 docker-compose
 gcc
 gdb
 git
 glu
+graphviz
 go
 lldb
 make
@@ -108,6 +111,8 @@ nmap
 openbsd-netcat
 openssh
 openssh-askpass
+strongswan
+traceroute
 wpa_supplicant
 
 ### Printing

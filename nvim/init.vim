@@ -156,6 +156,7 @@ let g:polyglot_disabled = [
   \ 'tex',
   \ 'lua',
   \ 'nix',
+  \ 'php',
   \ 'python',
   \ 'rst',
   \ 'ruby',
@@ -166,21 +167,6 @@ let g:polyglot_disabled = [
   \ 'typescript',
   \ 'tsx',
   \ 'idris']
-
-"
-augroup au_polyglot_md_disable_indentexpr
-  autocmd!
-  autocmd BufEnter *.md set indentexpr=
-augroup END
-
-augroup au_filetypes_rename
-  autocmd!
-
-  " Enable racket for rkt files
-  autocmd BufNewFile,BufRead *.rkt setfiletype racket
-  autocmd BufNewFile,BufRead *.json setfiletype jsonc
-  autocmd BufNewFile,BufRead *.nix setfiletype nix
-augroup END
 
 " vim-plug download
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -438,7 +424,11 @@ endif
 " emmet-vim
 let g:user_emmet_install_global = 0
 " Load emmet only in certain file types
-autocmd FileType html,css,javascript,typescript,javascriptreact,typescriptreact,xml EmmetInstall
+autocmd FileType
+  \ html,css,javascript,typescript
+  \,javascriptreact,typescriptreact,xml
+  \,php
+  \ EmmetInstall
 
 " pear-tree
 let g:pear_tree_smart_openers = 1
@@ -492,6 +482,7 @@ if has('nvim')
         \'coc-vimtex',
         \'coc-vimlsp',
         \'coc-yaml',
+        \'@yaegassy/coc-intelephense',
         \]
 endif
 
@@ -597,7 +588,7 @@ endfunction
 function! GetFileNameIcon()
   if winwidth(0) > 70
     if strlen(@%)
-      return WebDevIconsGetFileTypeSymbol() . ' ' . @% . (&modified ? ' ●' : '')
+      return WebDevIconsGetFileTypeSymbol(@%) . ' ' . @% . (&modified ? ' ●' : '')
     else
       return '[No Name]'
     endif
@@ -608,7 +599,7 @@ endfunction
 
 function! GetFileTypeIcon()
   return winwidth(0) > 70
-    \ ? (strlen(&filetype) ? &filetype.' '.WebDevIconsGetFileTypeSymbol() : 'no ft')
+    \ ? (strlen(&filetype) ? &filetype.' '.WebDevIconsGetFileTypeSymbol(@%) : 'no ft')
     \ : ''
 endfunction
 
@@ -914,6 +905,28 @@ function! RestoreQFItem()
     echohl None
   endif
 endfunction
+
+" }}}
+
+" FileType options {{{
+
+augroup au_file_adjustments
+  autocmd!
+
+  " Enable racket for rkt files
+  autocmd BufNewFile,BufRead *.rkt setfiletype racket
+  autocmd BufNewFile,BufRead *.json setfiletype jsonc
+  autocmd BufNewFile,BufRead *.nix setfiletype nix
+
+  " Enable manually php autoindent
+  autocmd BufEnter *.php set autoindent smartindent
+
+  " Disable buggy md indenting
+  autocmd BufEnter *.md set indentexpr=
+
+  " Run autoformat for
+
+augroup END
 
 " }}}
 
